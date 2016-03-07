@@ -1,8 +1,8 @@
 ;(function () {
     var template = '' +
-        '<div class="datepicker--nav-action" data-action="prev">#{prevHtml}</div>' +
-        '<div class="datepicker--nav-title">#{title}</div>' +
-        '<div class="datepicker--nav-action" data-action="next">#{nextHtml}</div>',
+            '<div class="datepicker--nav-action" data-action="prev">#{prevHtml}</div>' +
+            '<div class="datepicker--nav-title">#{title}</div>' +
+            '<div class="datepicker--nav-action" data-action="next">#{nextHtml}</div>',
         buttonsContainerTemplate = '<div class="datepicker--buttons"></div>',
         button = '<span class="datepicker--button" data-action="#{action}">#{label}</span>';
 
@@ -85,26 +85,26 @@
 
             switch (this.d.view) {
                 case 'days':
-                    if (!this.d._isInRange(new Date(y, m-1, d), 'month')) {
+                    if (!this.d._isInRange(new Date(y, m - 1, d), 'month')) {
                         this._disableNav('prev')
                     }
-                    if (!this.d._isInRange(new Date(y, m+1, d), 'month')) {
+                    if (!this.d._isInRange(new Date(y, m + 1, d), 'month')) {
                         this._disableNav('next')
                     }
                     break;
                 case 'months':
-                    if (!this.d._isInRange(new Date(y-1, m, d), 'year')) {
+                    if (!this.d._isInRange(new Date(y - 1, m, d), 'year')) {
                         this._disableNav('prev')
                     }
-                    if (!this.d._isInRange(new Date(y+1, m, d), 'year')) {
+                    if (!this.d._isInRange(new Date(y + 1, m, d), 'year')) {
                         this._disableNav('next')
                     }
                     break;
                 case 'years':
-                    if (!this.d._isInRange(new Date(y-10, m, d), 'year')) {
+                    if (!this.d._isInRange(new Date(y - 10, m, d), 'year')) {
                         this._disableNav('prev')
                     }
-                    if (!this.d._isInRange(new Date(y+10, m, d), 'year')) {
+                    if (!this.d._isInRange(new Date(y + 10, m, d), 'year')) {
                         this._disableNav('next')
                     }
                     break;

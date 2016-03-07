@@ -1,18 +1,18 @@
 ;(function () {
     var templates = {
-        days:'' +
-        '<div class="datepicker--days datepicker--body">' +
-        '<div class="datepicker--days-names"></div>' +
-        '<div class="datepicker--cells datepicker--cells-days"></div>' +
-        '</div>',
-        months: '' +
-        '<div class="datepicker--months datepicker--body">' +
-        '<div class="datepicker--cells datepicker--cells-months"></div>' +
-        '</div>',
-        years: '' +
-        '<div class="datepicker--years datepicker--body">' +
-        '<div class="datepicker--cells datepicker--cells-years"></div>' +
-        '</div>'
+            days: '' +
+            '<div class="datepicker--days datepicker--body">' +
+            '<div class="datepicker--days-names"></div>' +
+            '<div class="datepicker--cells datepicker--cells-days"></div>' +
+            '</div>',
+            months: '' +
+            '<div class="datepicker--months datepicker--body">' +
+            '<div class="datepicker--cells datepicker--cells-months"></div>' +
+            '</div>',
+            years: '' +
+            '<div class="datepicker--years datepicker--body">' +
+            '<div class="datepicker--cells datepicker--cells-years"></div>' +
+            '</div>'
         },
         D = Datepicker;
 
@@ -104,26 +104,25 @@
             }
 
             if (opts.range) {
-                if (D.isSame(parent.minRange, date, type)) classes += ' -range-from-';
-                if (D.isSame(parent.maxRange, date, type)) classes += ' -range-to-';
+                if (D.isSame(parent.selectedStartRange, date, type)) classes += ' -range-from-';
+                if (D.isSame(parent.selectedEndRange, date, type)) classes += ' -range-to-';
 
                 if (parent.selectedDates.length == 1 && parent.focused) {
                     if (
-                        (D.bigger(parent.minRange, date) && D.less(parent.focused, date)) ||
-                        (D.less(parent.maxRange, date) && D.bigger(parent.focused, date)))
-                    {
+                        (D.bigger(parent.selectedStartRange, date) && D.less(parent.focused, date)) ||
+                        (D.less(parent.selectedEndRange, date) && D.bigger(parent.focused, date))) {
                         classes += ' -in-range-'
                     }
 
-                    if (D.less(parent.maxRange, date) && D.isSame(parent.focused, date)) {
+                    if (D.less(parent.selectedEndRange, date) && D.isSame(parent.focused, date)) {
                         classes += ' -range-from-'
                     }
-                    if (D.bigger(parent.minRange, date) && D.isSame(parent.focused, date)) {
+                    if (D.bigger(parent.selectedStartRange, date) && D.isSame(parent.focused, date)) {
                         classes += ' -range-to-'
                     }
 
                 } else if (parent.selectedDates.length == 2) {
-                    if (D.bigger(parent.minRange, date) && D.less(parent.maxRange, date)) {
+                    if (D.bigger(parent.selectedStartRange, date) && D.less(parent.selectedEndRange, date)) {
                         classes += ' -in-range-'
                     }
                 }
@@ -172,7 +171,7 @@
         },
 
         _getDayHtml: function (date) {
-           var content = this._getCellContents(date, 'day');
+            var content = this._getCellContents(date, 'day');
 
             return '<div class="' + content.classes + '" ' +
                 'data-date="' + date.getDate() + '" ' +
@@ -191,7 +190,7 @@
                 d = D.getParsedDate(date),
                 i = 0;
 
-            while(i < 12) {
+            while (i < 12) {
                 html += this._getMonthHtml(new Date(d.year, i));
                 i++
             }
@@ -213,7 +212,7 @@
                 i = firstYear;
 
             for (i; i <= decade[1] + 1; i++) {
-                html += this._getYearHtml(new Date(i , 0));
+                html += this._getYearHtml(new Date(i, 0));
             }
 
             return html;
@@ -259,7 +258,7 @@
                 $cell = $(this);
                 date = _this.d._getDateFromCell($(this));
                 classes = _this._getCellContents(date, _this.d.cellType);
-                $cell.attr('class',classes.classes)
+                $cell.attr('class', classes.classes)
             });
         },
 
@@ -291,7 +290,7 @@
 
             if (!alreadySelected) {
                 this.d.selectDate(selectedDate);
-            } else if (alreadySelected && this.opts.toggleSelected){
+            } else if (alreadySelected && this.opts.toggleSelected) {
                 this.d.removeDate(selectedDate);
             }
 
