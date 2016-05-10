@@ -6,6 +6,6 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
 module.exports = function () {
-    gulp.src('src/js/i18n/*.js')
-        .pipe(gulp.dest('dist/js/i18n'))
+    return gulp.src('src/js/i18n/*.js')
+        .pipe(gulp.dest('dist/js/i18n'));
 };

@@ -16,9 +16,9 @@ module.exports = function () {
     stream.pipe(clone())
         .pipe(gulp.dest('dist/js'));
 
-    stream.pipe(clone())
+    return stream.pipe(clone())
         .pipe(uglify())
         .pipe(rename('datepicker.min.js'))
-        .pipe(gulp.dest('dist/js'))
+        .pipe(gulp.dest('dist/js'));
 
 };

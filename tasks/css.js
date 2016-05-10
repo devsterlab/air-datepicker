@@ -18,7 +18,7 @@ module.exports = function () {
         .pipe(rename('datepicker.min.css'))
         .pipe(gulp.dest('dist/css'));
 
-    stream.pipe(clone())
+    return stream.pipe(clone())
         .pipe(rename('datepicker.css'))
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('dist/css'));
 };
