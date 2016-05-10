@@ -145,11 +145,15 @@ block content
 
 		+example
 			+example-content
-				input(type='text' data-range='true' data-multiple-dates-separator=' - ').datepicker-here
+				input(type='text' data-range='true' data-frequency='WEEKLY' data-multiple-dates-separator=' - ').datepicker-here
 
 			+example-code('html')
 				:code
-					<input type="text" data-range="true" data-multiple-dates-separator=" - " class="datepicker-here"/>
+					<input type="text"
+						data-range="true"
+						data-frequency="WEEKLY"
+						data-multiple-dates-separator=" - "
+						class="datepicker-here"/>
 
 		h3#example-disabled-days Неактивные дни недели
 		p Для того, чтобы сделать невозмножным выбрать конкретные дни недели, можно воспользоваться методом
@@ -576,6 +580,14 @@ block content
 				+example-inline('view = "months"', 'js')
 				| .
 
+		.param
+			+param-header('minRange','integer','0')
+			p Минимальное количество выбраных дат.
+
+		.param
+			+param-header('maxRange','integer','0')
+			p Максимальное количество выбраных дат.
+
 	article
 		h2#events События
 		.param
@@ -758,3 +770,93 @@ block content
 
 			+example-code('js').
 				datepicker.date = new Date();
+
+		h3 ограничение области выбора
+		p
+			| Для ограничения количества выбраных дат, используйте
+			+example-inline('maxRange')
+			|                     и
+			+example-inline('minRange')
+			|,
+			|                     они должны быть целочисленными значениями.
+		+example
+			+example-code('js').
+				$('#rangeExampleDaily').datepicker({
+					range: 'true',
+					frequency: 'DAILY',
+					language: 'en',
+					multipleDatesSeparator: ' - ',
+					maxRange: 20,
+					minRange: 10
+				})
+			+example-content
+				input#rangeExampleDaily(type='text')
+				script.
+					$('#rangeExampleDaily').datepicker({
+						range: 'true',
+						frequency: 'DAILY',
+						language: 'en',
+						multipleDatesSeparator: ' - ',
+						maxRange: 20,
+						minRange: 10
+					})
+			+example-code('js').
+				$('#rangeExampleWeekly').datepicker({
+					range: 'true',
+					frequency: 'WEEKLY',
+					language: 'en',
+					multipleDatesSeparator: ' - ',
+					maxRange: 3,
+					minRange: 2
+				})
+			+example-content
+				input#rangeExampleWeekly(type='text')
+				script.
+					$('#rangeExampleWeekly').datepicker({
+						range: 'true',
+						frequency: 'WEEKLY',
+						language: 'en',
+						multipleDatesSeparator: ' - ',
+						maxRange: 3,
+						minRange: 2
+					})
+			+example-code('js').
+				$('#rangeExampleMonthly').datepicker({
+					range: 'true',
+					frequency: 'MONTHLY',
+					language: 'en',
+					multipleDatesSeparator: ' - ',
+					maxRange: 4,
+					minRange: 3
+				})
+			+example-content
+				input#rangeExampleMonthly(type='text')
+				script.
+					$('#rangeExampleMonthly').datepicker({
+						range: 'true',
+						frequency: 'MONTHLY',
+						language: 'en',
+						multipleDatesSeparator: ' - ',
+						maxRange: 4,
+						minRange: 3
+					})
+			+example-code('js').
+				$('#rangeExampleYearly').datepicker({
+					range: 'true',
+					frequency: 'YEARLY',
+					language: 'en',
+					multipleDatesSeparator: ' - ',
+					maxRange: 5,
+					minRange: 3
+				})
+			+example-content
+				input#rangeExampleYearly(type='text')
+				script.
+					$('#rangeExampleYearly').datepicker({
+						range: 'true',
+						frequency: 'YEARLY',
+						language: 'en',
+						multipleDatesSeparator: ' - ',
+						maxRange: 5,
+						minRange: 3
+					})
