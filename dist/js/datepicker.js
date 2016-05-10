@@ -1243,6 +1243,8 @@ var Datepicker;
 
                 date = this._getDateFromCell($cell);
 
+            } else {
+                highlightDate = new Date(date);
             }
 
             // Prevent from unnecessary rendering and setting new currentDate

@@ -28,7 +28,7 @@ gulp.task('html', function () {
     return gulp.src(['docs/index.html', 'docs/index-ru.html'])
         .pipe(htmlreplace({
             'css': 'dist/css/datepicker.min.css',
-            'js': 'dist/js/datepicker.js',
+            'js': 'dist/js/datepicker.min.js',
             'i18n': 'dist/js/i18n/datepicker.en.js'
         }))
         .pipe(minifyHtml())
